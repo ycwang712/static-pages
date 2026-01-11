@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Hello World</title>
+    <style>
+        /* 1. 設定全螢幕動態漸層背景 */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            overflow: hidden;
+        }
+
+        /* 背景流動動畫定義 */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 2. 毛玻璃卡片容器 (Glassmorphism) */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1); /* 低透明度白色 */
+            backdrop-filter: blur(10px);          /* 背景模糊處理 */
+            -webkit-backdrop-filter: blur(10px);  /* Safari 支援 */
+            border-radius: 20px;
+            padding: 60px 100px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+
+        /* 滑鼠懸停時卡片稍微浮起 */
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        /* 3. 霓虹文字特效 */
+        h1 {
+            color: #fff;
+            font-size: 4rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            /* 模擬霓虹燈光暈 */
+            text-shadow:
+                0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 42px #0fa,
+                0 0 82px #0fa,
+                0 0 92px #0fa;
+            animation: textFlicker 2s infinite alternate;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            margin-top: 20px;
+            font-weight: 300;
+        }
+
+        /* 文字微微閃爍動畫 */
+        @keyframes textFlicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 42px #0fa,
+                0 0 82px #0fa;
+            }
+            20%, 24%, 55% {       
+                text-shadow: none; /* 模擬燈光接觸不良閃爍 */
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-card">
+        <h1>Hello World</h1>
+        <p>歡迎來到我的靜態網頁</p>
+    </div>
+
+</body>
+</html>
